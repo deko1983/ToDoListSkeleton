@@ -24,21 +24,24 @@
             <!-- Form per aggiungere nuovi item -->
             <form id="add-item-form">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Nuovo item" id="new-item-text" required>
+                <input type="text" class="form-control" placeholder="Nuovo item" id="new-item-text" required onchange="inputChanged(event)">
                 <div class="input-group-append">
-                  <button class="btn btn-success" type="submit">Aggiungi</button>
+                  <button class="btn btn-secondary" type="submit">Aggiungi</button>
                 </div>
               </div>
             </form>
 
             <ul class="list-group" id="tasks-list">
               <!-- Gli elementi verranno aggiunti qui dinamicamente -->
+              <!--
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Task description</span>
-              <div>
-                <button type="button" class="btn btn-warning btn-sm" onclick="editTask(this.parentNode.parentNode)"><i class="fas fa-pen-to-square"></i></button>
-                <button type="button" class="btn btn-danger btn-sm" onclick="deleteTask(this.parentNode.parentNode)"><i class="fas fa-trash-alt"></i></button>
-              </div>
+                <div>
+                  <button type="button" class="btn btn-warning btn-sm" onclick="editTask(this.parentNode.parentNode)"><i class="fas fa-pen-to-square"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="deleteTask(this.parentNode.parentNode)"><i class="fas fa-trash-alt"></i></button>
+                </div>
+              </li>
+              -->
             </ul>
             
           </div>
