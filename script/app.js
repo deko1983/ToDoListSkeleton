@@ -4,7 +4,7 @@ document.getElementById('add-item-form').addEventListener('submit', function (ev
   event.preventDefault();
 
   // placeholder per la funzione di aggiunta elemento in lista
-  addItem();
+  saveTask();
 
   // svuoto il campo di input
   document.getElementById('new-item-text').value = '';
@@ -42,7 +42,49 @@ function deleteTask(elementToRemove) {
   itemList.removeChild(elementToRemove);
 }
 
-function inputChanged(e)  {
-  console.log(e.target);
+function editTask(elementToEdit)  {
+  var currentText = elementToEdit.querySelector('span').innerText;
+  var newTaskText = prompt('Modifica il task:', currentText);
+
+  if (newTaskText !== null && (newTaskText.trim() !== currentText.trim()))  {
+    elementToEdit.querySelector('span').innerText = newTaskText;
+    elementToEdit.style.backgroundColor = 'yellow';
+  }
 }
+
+
+function inputChanged(e)  {
+  var inputElement = e.target;
+  var button = document.querySelector('div.input-group-append .btn');
+  
+  if (inputElement.value && inputElement.value.trim().length > 0)  
+    button.classList.replace('btn-secondary', 'btn-success');
+  else
+    button.classList.replace('btn-success', 'btn-secondary');
+}
+
+
+document.getElementById('new-item-text').addEventListener('change', function(event) {
+  var button = document.querySelector('button[type="submit"]');
+
+  if (this.value && this.value.trim().length > 0)  
+    button.classList.replace('btn-secondary', 'btn-success');
+  else
+    button.classList.replace('btn-success', 'btn-secondary');
+});
+
+document.getElementById('todo-select')
+  .addEventListener('change', function() {
+    var selectedValue = this.value;
+    
+    var items = document.querySelectorAll('li');
+    
+    for (var i=0; i < items.length; i++)  {
+        if (items[i].innerText.trim() == selectedValue.trim())
+          items[i].style.backgroundColor = "green";
+        else
+          items[i].style.backgroundColor = "white";
+    }
+  });
+
 
